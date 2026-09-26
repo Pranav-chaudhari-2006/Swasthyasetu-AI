@@ -1,0 +1,6 @@
+{
+  "name": "SwasthyaSetu AI - Clinical Command Center",
+  "description": "Tactile clinical command center for rural cardiology triage, telemetry monitoring, emergency facility routing, and post-discharge care protocols under ABDM protocols.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -35,3 +35,10 @@ Thumbs.db
 .vscode/
 .idea/
 *.sw?
+
+# ZIP uploads / release bundles
+*.zip
+
+# Android build outputs (APK binaries)
+frontend/mob/android/app/build/
+frontend/android/app/build/

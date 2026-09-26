@@ -1,11 +1,46 @@
-# SwasthyaSetu AI: Unified Frontend Portals
+# SwasthyaSetu AI — Frontend
 
 [![Vercel Deployment](https://img.shields.io/badge/Vercel_Edge-Live_Production-emerald?style=for-the-badge&logo=vercel)](https://frontend-nu-six-f3yyi717g5.vercel.app)
 [![Vitest Passing](https://img.shields.io/badge/Vitest-6%2F6_Passing_(100%25)-brightgreen?style=for-the-badge&logo=vitest)](https://frontend-nu-six-f3yyi717g5.vercel.app)
 
-> **Frontend Architecture**: React 19 + TypeScript + Vite + Vanilla CSS design system.  
+> **Design System**: Ayurvedic Slate & Emerald · Plus Jakarta Sans + Inter + JetBrains Mono  
 > **Live Production**: [https://frontend-nu-six-f3yyi717g5.vercel.app](https://frontend-nu-six-f3yyi717g5.vercel.app)  
 > **Design Specification**: [docs/specifications/frontend_design.md](../docs/specifications/frontend_design.md)
+
+---
+
+## 📁 Directory Structure
+
+```
+frontend/
+├── web/                    ← React/Vite PWA (Vercel deployed)
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── screens/    (4 screens: Triage, Vitals, Referrals, CarePlans)
+│   │   │   ├── modals/     (5 modals: Emergency, TeleConsult, FHIR, CarePlan, EHR)
+│   │   │   ├── Header.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── Toast.tsx
+│   │   ├── types/clinical.ts
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css       ← Ayurvedic Slate & Emerald design tokens
+│   ├── index.html
+│   ├── vite.config.ts
+│   ├── tsconfig*.json
+│   ├── vercel.json
+│   └── package.json        ← web-only deps (no Capacitor)
+│
+└── mob/                    ← Capacitor Android wrapper (APK)
+    ├── android/            ← Gradle project → app-debug.apk
+    ├── capacitor.config.ts (webDir: ../web/dist)
+    └── package.json        ← Capacitor-only deps
+
+```
+
+---
+
+
 
 ---
 
