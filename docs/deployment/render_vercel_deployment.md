@@ -127,12 +127,39 @@ Output:
 
 ---
 
-## 4. Verification & Health Check Checklist
+## 4. GitHub Repository & Automated Git Deployment
+
+### 4.1 Repository Details
+- **GitHub Repository**: [https://github.com/Pranav-chaudhari-2006/Swasthyasetu-AI](https://github.com/Pranav-chaudhari-2006/Swasthyasetu-AI)
+- **Primary Branch**: `main`
+- **CI/CD Workflow**: [.github/workflows/ci-cd.yml](file:///c:/Users/prana/Desktop/SIH%20Final%20MVP/.github/workflows/ci-cd.yml)
+
+### 4.2 Redeploy Backend on Render via GitHub
+1. In the [Render Dashboard](https://dashboard.render.com):
+   - Click **New +** $\to$ **Blueprint**.
+   - Select your GitHub repository: `Pranav-chaudhari-2006/Swasthyasetu-AI`.
+   - Render automatically reads [render.yaml](file:///c:/Users/prana/Desktop/SIH%20Final%20MVP/render.yaml) from root.
+   - It will automatically provision the managed PostgreSQL database `swasthyasetu-postgres` and launch the web service `swasthyasetu-api-gateway`.
+2. **Auto-Deploy on Push**: Every subsequent `git push origin main` triggers Render to automatically build and redeploy the gateway and services.
+
+### 4.3 Redeploy Frontend on Vercel via GitHub
+1. In the [Vercel Dashboard](https://vercel.com):
+   - Click **Add New...** $\to$ **Project**.
+   - Select `Pranav-chaudhari-2006/Swasthyasetu-AI`.
+   - Set **Root Directory** to `frontend`.
+   - Framework preset will automatically detect `Vite` (with build command `npm run build` and output `dist`).
+   - Click **Deploy**.
+2. **Auto-Deploy on Push**: Every subsequent `git push origin main` triggers Vercel to automatically rebuild and deploy to global edge CDN.
+
+---
+
+## 5. Verification & Health Check Checklist
 
 - [x] All 11 Backend microservices tested with zero mock fallback failures.
-- [x] Full-journey E2E integration test suite executed with 100% pass rate (23 / 23 gateway tests).
+- [x] Full-journey E2E integration test suite executed with 100% pass rate (28 / 28 gateway tests including KeepAlive).
 - [x] Frontend test suite executed with 100% pass rate (6 / 6 Vitest tests).
-- [x] Frontend production bundle built cleanly in under 1 second.
+- [x] Codebase initialized in Git, committed, and pushed to `https://github.com/Pranav-chaudhari-2006/Swasthyasetu-AI.git` on `main`.
 - [x] Vercel CLI deployed live and production alias active: `https://frontend-nu-six-f3yyi717g5.vercel.app`.
-- [x] Render Blueprint validated with 0 syntax or schema violations.
-- [x] User authorization explicitly requested and approved via Rule 2.6 Gate.
+- [x] Render Blueprint validated with 0 syntax or schema violations (`render.yaml`).
+- [x] GitHub Actions CI/CD pipeline configured in `.github/workflows/ci-cd.yml`.
+- [x] Render Free-Tier Keep-Alive pinger active with random 40-45s jitter intervals.
