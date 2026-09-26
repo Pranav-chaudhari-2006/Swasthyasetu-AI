@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: swasthyasetu-api-gateway
+    env: node
+    plan: free
+    region: oregon
+    rootDir: backend/gateway
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: QR_HMAC_SECRET
+        generateValue: true
+
+databases:
+  - name: swasthyasetu-postgres
+    plan: free
+    region: oregon
+    databaseName: swasthyasetu_db
+    user: swasthyasetu_admin
